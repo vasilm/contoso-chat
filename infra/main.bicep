@@ -20,7 +20,7 @@ param containerRegistryName string = ''
 param cosmosAccountName string = ''
 param keyVaultName string = ''
 param resourceGroupName string = ''
-param searchLocation string = ''
+param searchLocation string = 'westeurope' //''
 param searchServiceName string = ''
 param storageServiceName string = ''
 
@@ -28,12 +28,12 @@ param accountsContosoChatSfAiServicesName string = 'contoso-chat-sf-ai-aiservice
 param workspacesApwsContosoChatSfAiName string = 'apws-contoso-chat-sf-ai'
 
 @description('Id of the user or app to assign application roles')
-param principalId string = ''
+param principalId string = '379c55b5-f7bd-4353-92ef-b48a5b9440a7'
 
 var openAiSubdomain  = '${accountsContosoChatSfAiServicesName}${resourceToken}'
 var openAiEndpoint = 'https://${openAiSubdomain }.openai.azure.com/'
 var resourceToken = toLower(uniqueString(subscription().id, environmentName, location))
-var tags = { 'azd-env-name': environmentName }
+var tags = {  'Contact' : 'vasil.mamikonyan@dataart.com' } //'azd-env-name': environmentName,
 
 // Organize resources in a resource group
 resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {

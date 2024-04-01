@@ -1,5 +1,5 @@
-resourceGroupName="contchat-rg"
-resourceGroupLocation="swedencentral"
+resourceGroupName="rg-contosochat7xx"
+resourceGroupLocation="switzerlandnorth"
 
 if [ -z "$(az account show)" ]; then
     echo "You are not logged in. Please run 'az login' or 'az login --use-device-code' first."
@@ -11,14 +11,15 @@ az account show --query "{subscriptionId:id, name:name}"
 echo "If that is not the correct subscription, please run 'az account set --subscription \"<SUBSCRIPTION-NAME>\"'"
 
 echo "Creating resource group $resourceGroupName in $resourceGroupLocation..."
-az group create --name $resourceGroupName --location $resourceGroupLocation > /dev/null
+az group create --name $resourceGroupName --location $resourceGroupLocation --tags Contact="vasil.mamikonyan@dataart.com" #> /dev/null
 if [ $? -ne 0 ]; then
     echo "ERROR: Failed to create resource group, perhaps you need to set the subscription? See command above."
     exit 1
 fi
 
 echo "Provisioning resources in resource group $resourceGroupName..."
-az deployment group create --resource-group $resourceGroupName --name contchat --only-show-errors --template-file infra/main.bicep > /dev/null
+az deployment sub  create --location $resourceGroupLocation  --name contchat   --template-file infra/main.bicep> /dev/null
+#az deployment group create --resource-group $resourceGroupName --name contchat --only-show-errors --template-file infra/main.bicep> /dev/null
 if [ $? -ne 0 ]; then
     echo "ERROR: Failed to provision resources. Please check the error message above."
     exit 1
