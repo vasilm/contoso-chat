@@ -219,6 +219,9 @@ You will however need to **create `contoso-cosmos` manually from Azure ML Studio
       - key=databaseId, value=contoso-outdoor
 1. Click "Save" to finish setup. 
 
+see screenshot: 
+![alt text](image.png)
+
 Refresh main Connections list screen to verify that you now have all three required connections listed.
 
 

@@ -11,7 +11,7 @@ az account show --query "{subscriptionId:id, name:name}"
 echo "If that is not the correct subscription, please run 'az account set --subscription \"<SUBSCRIPTION-NAME>\"'"
 
 echo "Creating resource group $resourceGroupName in $resourceGroupLocation..."
-az group create --name $resourceGroupName --location $resourceGroupLocation > /dev/null
+az group create --name $resourceGroupName --tags Contact="vasil.mamikonyan@dataart.com" --location $resourceGroupLocation > /dev/null
 if [ $? -ne 0 ]; then
     echo "ERROR: Failed to create resource group, perhaps you need to set the subscription? See command above."
     exit 1
